@@ -8,5 +8,7 @@ namespace winform_mvp
         object DataContext { get; set; }
         void Show();
         void Close();
+        object ShowDialog();
+        void StartApplication();
     }
 }

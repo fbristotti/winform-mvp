@@ -9,6 +9,7 @@ namespace winform_mvp
     public interface IPresenter : IDisposable
     {
         void Show();
+        void StartApplication();
         IView View { get; }
         void Initialize(object[] args);
     }

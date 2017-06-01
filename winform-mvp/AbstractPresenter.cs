@@ -2,20 +2,27 @@
 
 namespace winform_mvp
 {
-    public abstract class AbstractPresenter<TModel, TView> : IPresenter where TView : class, IView, new()
+    public abstract class AbstractPresenter<TModel, TView> : IPresenter where TView : class, IView
     {
         private TModel _model;
         private readonly TView _view;
 
-        protected AbstractPresenter()
+        protected AbstractPresenter(TView view)
         {
-            _view = new TView();
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
+            _view = view;
             _view.Closed += (sender, args) => Dispose();
         }
 
         public void Show()
         {
             View.Show();
+        }
+
+        public void StartApplication()
+        {
+            View.StartApplication();
         }
 
         IView IPresenter.View => _view;

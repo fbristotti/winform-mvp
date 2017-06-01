@@ -23,6 +23,10 @@ namespace winform_mvp_test
         {
             
         }
+
+        public MyPresenter(MyView view) : base(view)
+        {
+        }
     }
 
     public class MyModel
@@ -56,6 +60,16 @@ namespace winform_mvp_test
         }
 
         public void Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ShowDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartApplication()
         {
             throw new NotImplementedException();
         }

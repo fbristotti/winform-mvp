@@ -62,6 +62,12 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewBase.Designer.cs">
+      <DependentUpon>ViewBase.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\winform-mvp\winform-mvp.csproj">
@@ -72,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewBase.resx">
+      <DependentUpon>ViewBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>

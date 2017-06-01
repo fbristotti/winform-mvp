@@ -16,6 +16,15 @@ namespace winform_mvp
             return presenter;
         }
 
+        public static TPresenter StartApplication<TPresenter>(object[] args = null) where TPresenter : IPresenter
+        {
+            var presenter = Activator.CreateInstance<TPresenter>();
+            presenter.Initialize(args);
+            WireEvents(presenter);
+            presenter.StartApplication();
+            return presenter;
+        }
+
         private static void WireEvents(IPresenter presenter)
         {
             var viewType = presenter.View.GetType();

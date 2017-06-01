@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winform-mvp", "winform-mvp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winform-mvp-test", "winform-mvp-test\winform-mvp-test.csproj", "{3A182912-12D0-4C48-9F6F-DDBA3814438B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-test", "wpf-test\wpf-test.csproj", "{762334EB-3B13-4CA3-8D79-09A3D504B3E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication", "MyApplication\MyApplication.csproj", "{B913F113-80CB-48CB-A20E-61463380804B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3A182912-12D0-4C48-9F6F-DDBA3814438B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A182912-12D0-4C48-9F6F-DDBA3814438B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A182912-12D0-4C48-9F6F-DDBA3814438B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762334EB-3B13-4CA3-8D79-09A3D504B3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762334EB-3B13-4CA3-8D79-09A3D504B3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762334EB-3B13-4CA3-8D79-09A3D504B3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762334EB-3B13-4CA3-8D79-09A3D504B3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B913F113-80CB-48CB-A20E-61463380804B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B913F113-80CB-48CB-A20E-61463380804B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B913F113-80CB-48CB-A20E-61463380804B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B913F113-80CB-48CB-A20E-61463380804B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
