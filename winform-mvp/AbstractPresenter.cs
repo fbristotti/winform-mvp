@@ -27,18 +27,19 @@ namespace winform_mvp
 
         IView IPresenter.View => _view;
         public TView View => _view;
+
         public virtual void Initialize(object[] args)
         {
             
         }
 
-        private TModel Model
+        protected TModel Model
         {
             get { return _model; }
             set
             {
                 _model = value;
-                _view.DataContext = _model;
+                _view.DataSource = _model;
             }
         }
 

@@ -5,7 +5,7 @@ namespace winform_mvp
     public interface IView : IDisposable
     {
         event EventHandler Closed;
-        object DataContext { get; set; }
+        object DataSource { get; set; }
         void Show();
         void Close();
         object ShowDialog();

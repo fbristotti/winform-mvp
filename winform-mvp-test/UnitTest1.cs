@@ -46,7 +46,7 @@ namespace winform_mvp_test
         }
 
         public event EventHandler Closed;
-        public object DataContext { get; set; }
+        public object DataSource { get; set; }
         public void Show()
         {
             throw new NotImplementedException();
