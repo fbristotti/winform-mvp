@@ -6,9 +6,9 @@ namespace winform_mvp
     {
         event EventHandler Closed;
         object DataSource { get; set; }
-        void Show();
+        void ShowView();
         void Close();
-        object ShowDialog();
+        void ShowViewDialog();
         void StartApplication();
     }
 }

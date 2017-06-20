@@ -7,7 +7,15 @@ namespace winform_mvp
 {
     public class Presenters
     {
-        public static TPresenter Show<TPresenter>(object[] args = null) where TPresenter : IPresenter
+        public static TPresenter Show<TPresenter, T>(T args) where TPresenter : IPresenter<T>
+        {
+            var presenter = Activator.CreateInstance<TPresenter>();
+            presenter.Initialize(args);
+            WireEvents(presenter);
+            return presenter;
+        }
+
+        public static TPresenter Show<TPresenter>(params object[] args) where TPresenter : IPresenter
         {
             var presenter = Activator.CreateInstance<TPresenter>();
             presenter.Initialize(args);

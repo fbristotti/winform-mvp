@@ -33,6 +33,7 @@
             System.Windows.Forms.Label conservadorLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label valueLabel;
+            System.Windows.Forms.Label financeiroLabel;
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,11 +43,13 @@
             this.conservadorCheckBox = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
+            this.financeiroTextBox = new System.Windows.Forms.TextBox();
             this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             dateLabel = new System.Windows.Forms.Label();
             conservadorLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             valueLabel = new System.Windows.Forms.Label();
+            financeiroLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +71,24 @@
             conservadorLabel.Size = new System.Drawing.Size(70, 13);
             conservadorLabel.TabIndex = 6;
             conservadorLabel.Text = "Conservador:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(29, 158);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(38, 13);
+            label1.TabIndex = 9;
+            label1.Text = "Nome:";
+            // 
+            // valueLabel
+            // 
+            valueLabel.AutoSize = true;
+            valueLabel.Location = new System.Drawing.Point(30, 184);
+            valueLabel.Name = "valueLabel";
+            valueLabel.Size = new System.Drawing.Size(33, 13);
+            valueLabel.TabIndex = 9;
+            valueLabel.Text = "Qtde:";
             // 
             // menuStrip1
             // 
@@ -139,31 +160,31 @@
             this.textBox1.Size = new System.Drawing.Size(166, 20);
             this.textBox1.TabIndex = 8;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(29, 158);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 13);
-            label1.TabIndex = 9;
-            label1.Text = "Nome:";
-            // 
-            // valueLabel
-            // 
-            valueLabel.AutoSize = true;
-            valueLabel.Location = new System.Drawing.Point(30, 184);
-            valueLabel.Name = "valueLabel";
-            valueLabel.Size = new System.Drawing.Size(37, 13);
-            valueLabel.TabIndex = 9;
-            valueLabel.Text = "Value:";
-            // 
             // valueTextBox
             // 
-            this.valueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Value", true));
+            this.valueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Quantidade", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.valueTextBox.Location = new System.Drawing.Point(73, 181);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(166, 20);
             this.valueTextBox.TabIndex = 10;
+            // 
+            // financeiroLabel
+            // 
+            financeiroLabel.AutoSize = true;
+            financeiroLabel.Location = new System.Drawing.Point(8, 209);
+            financeiroLabel.Name = "financeiroLabel";
+            financeiroLabel.Size = new System.Drawing.Size(59, 13);
+            financeiroLabel.TabIndex = 11;
+            financeiroLabel.Text = "Financeiro:";
+            // 
+            // financeiroTextBox
+            // 
+            this.financeiroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Financeiro", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.financeiroTextBox.Location = new System.Drawing.Point(73, 206);
+            this.financeiroTextBox.Name = "financeiroTextBox";
+            this.financeiroTextBox.ReadOnly = true;
+            this.financeiroTextBox.Size = new System.Drawing.Size(166, 20);
+            this.financeiroTextBox.TabIndex = 12;
             // 
             // modelBindingSource
             // 
@@ -173,6 +194,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(financeiroLabel);
+            this.Controls.Add(this.financeiroTextBox);
             this.Controls.Add(valueLabel);
             this.Controls.Add(this.valueTextBox);
             this.Controls.Add(label1);
@@ -185,7 +208,7 @@
             this.Controls.Add(this.dateDateTimePicker);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainView";
-            this.Size = new System.Drawing.Size(568, 235);
+            this.Size = new System.Drawing.Size(568, 257);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).EndInit();
@@ -205,5 +228,6 @@
         private System.Windows.Forms.CheckBox conservadorCheckBox;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox valueTextBox;
+        private System.Windows.Forms.TextBox financeiroTextBox;
     }
 }

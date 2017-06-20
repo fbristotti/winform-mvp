@@ -27,6 +27,11 @@ namespace winform_mvp_test
         public MyPresenter(MyView view) : base(view)
         {
         }
+
+        public override void Initialize(object arg)
+        {
+            
+        }
     }
 
     public class MyModel
@@ -38,40 +43,13 @@ namespace winform_mvp_test
     {
     }
 
-    public class MyView : IMyView
+    public class MyView : ViewBase
     {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public event EventHandler Closed;
-        public object DataSource { get; set; }
-        public void Show()
-        {
-            throw new NotImplementedException();
-        }
-
         public event EventHandler RefreshData;
 
         public void FireRefreshData()
         {
             RefreshData?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void Close()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ShowDialog()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartApplication()
-        {
-            throw new NotImplementedException();
         }
     }
 }

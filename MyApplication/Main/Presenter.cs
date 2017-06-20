@@ -3,7 +3,7 @@ using winform_mvp;
 
 namespace MyApplication.Main
 {
-    public class Presenter : AbstractPresenter<Model, IMainView>
+    public class Presenter : AbstractPresenter<Model, IMainView, string>
     {
         public Presenter() 
             : this(new MainView())
@@ -36,9 +36,15 @@ namespace MyApplication.Main
 
         public virtual void OnValueChanged()
         {
-            var value = Model.Value;
-
+            var value = Model.Quantidade;
             System.Diagnostics.Debug.WriteLine(value);
+            Model.Financeiro = 3.5M * value;
+        }
+
+        public override void Initialize(string redescontoId)
+        {
+            if (redescontoId == null)
+                throw new ArgumentNullException(nameof(redescontoId));
         }
     }
 }
