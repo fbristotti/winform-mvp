@@ -1,37 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace winform_mvp
 {
-    public partial class ViewBase : UserControl, IView
+    public partial class ViewBase<T> : UserControl, IView<T>
     {
         private Form _window;
-        private BindingSource _modelBindingSource;
+        private T _dataContext;
 
         public ViewBase()
         {
             InitializeComponent();
-            _modelBindingSource = new BindingSource();
-        }
-
-        protected void Bind<TControl, T>(TControl control, Func<TControl, T> property, string propertyName)
-        {
-            
+            dataContextBindingSource.DataSource = typeof(T);
         }
 
         public event EventHandler Closed;
-
-        public object DataSource
+        object IView.DataSource
         {
-            get { return _modelBindingSource.DataSource; }
-            set { _modelBindingSource.DataSource = value; }
+            get => DataSource;
+            set => DataSource = (T)value;
+        }
+
+        public T DataSource
+        {
+            get => _dataContext;
+            set => dataContextBindingSource.DataSource = _dataContext = value;
         }
 
         public void ShowView()
@@ -41,6 +34,7 @@ namespace winform_mvp
                 Text = Text,
             };
 
+            _window.Closed += (sender, args) => Closed?.Invoke(this, EventArgs.Empty);
             _window.Controls.Add(this);
             Dock = DockStyle.Fill;
             _window.Show();
@@ -48,14 +42,13 @@ namespace winform_mvp
 
         public void Close()
         {
-            throw new NotImplementedException();
         }
 
         public void ShowViewDialog()
         {
             _window = new Form
             {
-                Text = Text,
+                Text = Text
             };
 
             _window.Controls.Add(this);
@@ -63,9 +56,8 @@ namespace winform_mvp
             _window.ShowDialog();
         }
 
-        public void StartApplication()
+        protected void Bind<TControl, T>(TControl control, Func<TControl, T> property, string propertyName)
         {
-            throw new NotImplementedException();
         }
     }
 }

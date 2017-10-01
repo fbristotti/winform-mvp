@@ -9,6 +9,10 @@ namespace winform_mvp
         void ShowView();
         void Close();
         void ShowViewDialog();
-        void StartApplication();
+    }
+
+    public interface IView<T> : IView
+    {
+        new T DataSource { get; set; }
     }
 }

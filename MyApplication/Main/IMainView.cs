@@ -8,5 +8,6 @@ namespace MyApplication.Main
         event EventHandler AddDate;
         event EventHandler NameChanged;
         event EventHandler ValueChanged;
+        event EventHandler ShowDetails;
     }
 }

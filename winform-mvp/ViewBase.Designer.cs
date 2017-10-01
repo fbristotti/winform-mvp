@@ -1,6 +1,6 @@
 ﻿namespace winform_mvp
 {
-    partial class ViewBase
+    partial class ViewBase<T>
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
+            this.dataContextBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContextBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // ViewBase
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "ViewBase";
+            ((System.ComponentModel.ISupportInitialize)(this.dataContextBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        protected System.Windows.Forms.BindingSource dataContextBindingSource;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

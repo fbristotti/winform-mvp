@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label dateLabel;
             System.Windows.Forms.Label conservadorLabel;
             System.Windows.Forms.Label label1;
@@ -44,14 +43,14 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
             this.financeiroTextBox = new System.Windows.Forms.TextBox();
-            this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             dateLabel = new System.Windows.Forms.Label();
             conservadorLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             valueLabel = new System.Windows.Forms.Label();
             financeiroLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContextBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dateLabel
@@ -90,6 +89,15 @@
             valueLabel.TabIndex = 9;
             valueLabel.Text = "Qtde:";
             // 
+            // financeiroLabel
+            // 
+            financeiroLabel.AutoSize = true;
+            financeiroLabel.Location = new System.Drawing.Point(8, 209);
+            financeiroLabel.Name = "financeiroLabel";
+            financeiroLabel.Size = new System.Drawing.Size(59, 13);
+            financeiroLabel.TabIndex = 11;
+            financeiroLabel.Text = "Financeiro:";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -117,7 +125,7 @@
             // 
             // dateDateTimePicker
             // 
-            this.dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.modelBindingSource, "Date", true));
+            this.dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContextBindingSource, "Date", true));
             this.dateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDateTimePicker.Location = new System.Drawing.Point(57, 42);
             this.dateDateTimePicker.Name = "dateDateTimePicker";
@@ -145,7 +153,7 @@
             // 
             // conservadorCheckBox
             // 
-            this.conservadorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.modelBindingSource, "Conservador", true));
+            this.conservadorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.dataContextBindingSource, "Conservador", true));
             this.conservadorCheckBox.Location = new System.Drawing.Point(94, 71);
             this.conservadorCheckBox.Name = "conservadorCheckBox";
             this.conservadorCheckBox.Size = new System.Drawing.Size(22, 24);
@@ -154,7 +162,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Nome", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContextBindingSource, "Nome", true));
             this.textBox1.Location = new System.Drawing.Point(73, 155);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(166, 20);
@@ -162,38 +170,35 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Quantidade", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.valueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContextBindingSource, "Quantidade", true));
             this.valueTextBox.Location = new System.Drawing.Point(73, 181);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(166, 20);
             this.valueTextBox.TabIndex = 10;
             // 
-            // financeiroLabel
-            // 
-            financeiroLabel.AutoSize = true;
-            financeiroLabel.Location = new System.Drawing.Point(8, 209);
-            financeiroLabel.Name = "financeiroLabel";
-            financeiroLabel.Size = new System.Drawing.Size(59, 13);
-            financeiroLabel.TabIndex = 11;
-            financeiroLabel.Text = "Financeiro:";
-            // 
             // financeiroTextBox
             // 
-            this.financeiroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modelBindingSource, "Financeiro", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.financeiroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContextBindingSource, "Financeiro", true));
             this.financeiroTextBox.Location = new System.Drawing.Point(73, 206);
             this.financeiroTextBox.Name = "financeiroTextBox";
             this.financeiroTextBox.ReadOnly = true;
             this.financeiroTextBox.Size = new System.Drawing.Size(166, 20);
             this.financeiroTextBox.TabIndex = 12;
             // 
-            // modelBindingSource
+            // button2
             // 
-            this.modelBindingSource.DataSource = typeof(MyApplication.Main.Model);
+            this.button2.Location = new System.Drawing.Point(444, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Show Details";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
             this.Controls.Add(financeiroLabel);
             this.Controls.Add(this.financeiroTextBox);
             this.Controls.Add(valueLabel);
@@ -209,9 +214,9 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainView";
             this.Size = new System.Drawing.Size(568, 257);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContextBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +226,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.BindingSource modelBindingSource;
         private System.Windows.Forms.DateTimePicker dateDateTimePicker;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
@@ -229,5 +233,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox valueTextBox;
         private System.Windows.Forms.TextBox financeiroTextBox;
+        private System.Windows.Forms.Button button2;
     }
 }

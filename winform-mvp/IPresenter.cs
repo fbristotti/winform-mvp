@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace winform_mvp
 {
     public interface IPresenter : IDisposable
     {
+        IView View { get; }
         void ShowView();
         void ShowViewDialog();
-        void StartApplication();
-        IView View { get; }
-        void Initialize(object arg);
+        void Initialize(object obj);
+        event EventHandler Closed;
     }
-
-    public interface IPresenter<in TArg> : IPresenter
-    {
-        void Initialize(TArg arg);
-    } 
 }

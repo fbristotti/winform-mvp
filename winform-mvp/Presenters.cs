@@ -2,35 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace winform_mvp
 {
     public class Presenters
     {
-        public static TPresenter Show<TPresenter, T>(T args) where TPresenter : IPresenter<T>
+        public static TPresenter Show<TPresenter>(object obj = null) where TPresenter : IPresenter
         {
             var presenter = Activator.CreateInstance<TPresenter>();
-            presenter.Initialize(args);
+            presenter.Initialize(obj);
             WireEvents(presenter);
+            presenter.ShowView();
             return presenter;
         }
 
-        public static TPresenter Show<TPresenter>(params object[] args) where TPresenter : IPresenter
+        public static void Run<TPresenter>(object args = null) where TPresenter : IPresenter
         {
-            var presenter = Activator.CreateInstance<TPresenter>();
-            presenter.Initialize(args);
-            WireEvents(presenter);
-
-            return presenter;
+            var presenter = Show<TPresenter>(args);
+            Application.Run(new PresenterApplicationContext(presenter));
         }
 
-        public static TPresenter StartApplication<TPresenter>(object[] args = null) where TPresenter : IPresenter
+        public class PresenterApplicationContext : ApplicationContext
         {
-            var presenter = Activator.CreateInstance<TPresenter>();
-            presenter.Initialize(args);
-            WireEvents(presenter);
-            presenter.StartApplication();
-            return presenter;
+            private readonly IPresenter _presenter;
+
+            public PresenterApplicationContext(IPresenter presenter)
+            {
+                _presenter = presenter ?? throw new ArgumentNullException(nameof(presenter));
+                Application.ApplicationExit += OnApplicationExit;
+                _presenter.Closed += OnPresenterClosed;
+            }
+
+            private void OnPresenterClosed(object sender, EventArgs e)
+            {
+                ExitThread();
+            }
+
+            private void OnApplicationExit(object sender, EventArgs e)
+            {
+                _presenter.Dispose();
+            }
         }
 
         private static void WireEvents(IPresenter presenter)

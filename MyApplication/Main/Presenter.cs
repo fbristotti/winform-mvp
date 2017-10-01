@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using winform_mvp;
 
 namespace MyApplication.Main
 {
-    public class Presenter : AbstractPresenter<Model, IMainView, string>
+    public class Presenter : AbstractPresenter<Model, IMainView>
     {
-        public Presenter() 
-            : this(new MainView())
+        private string _id;
+
+        public Presenter() : this(new MainView())
         {
             
         }
@@ -34,6 +36,17 @@ namespace MyApplication.Main
             System.Diagnostics.Debug.WriteLine(nome);
         }
 
+        public virtual void OnShowDetails()
+        {
+            Presenters.Show<Action1.Presenter>(new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("a", "aiga"),
+                new KeyValuePair<string, string>("b", "biga"),
+                new KeyValuePair<string, string>("c", "ciga"),
+                new KeyValuePair<string, string>("d", "diga"),
+            });
+        }
+
         public virtual void OnValueChanged()
         {
             var value = Model.Quantidade;
@@ -41,10 +54,9 @@ namespace MyApplication.Main
             Model.Financeiro = 3.5M * value;
         }
 
-        public override void Initialize(string redescontoId)
+        public override void Initialize(object args)
         {
-            if (redescontoId == null)
-                throw new ArgumentNullException(nameof(redescontoId));
+            Model.Nome = (string)args;
         }
     }
 }
